@@ -1,0 +1,97 @@
+Algorithms Practical 2
+
+Authors: Martín Cabana Fernandez, Antón Concheiro Fernandez, Roi Santos Ríos
+Group: 6.1
+
+In the second practical, we analyzed two sorting algorithms, shell-sort and insertion sort.
+We started by implementing said algorithms and testing them with arrays with different
+initializations (random, ascending and descending). Finally, we measured the execution
+times of said algorithms in each case. All times are given in microseconds.
+
+This test has been performed with OS Ubuntu 18.04.3 LTS (Bionic Beaver) 64-bit
+and a processor Intel Core i7-7500U CPU @ 2.70GHz * 4 and 8 Gb of RAM
+
+Insertion Sort Tests:
+
+Insertion sort with ascending initialization (*)
+       n            t(n)        t(n)/n^0.9          t(n)/n        t(n)/n^1.1
+     500           1.694         0.0063073       0.0033880         0.0018199
+    1000           3.501         0.0069854       0.0035010         0.0017547
+    2000           6.760         0.0072280       0.0033800         0.0015806
+    4000          13.426         0.0076929       0.0033565         0.0014645
+    8000          27.112         0.0083249       0.0033890         0.0013796
+   16000          54.306         0.0089359       0.0033941         0.0012892
+   32000         108.400         0.0095586       0.0033875         0.0012005
+(*) All times are less than 500 microseconds
+
+Insertion sort with random initialization
+       n            t(n)        t(n)/n^1.9        t(n)/n^2        t(n)/n^2.1
+(*)  500         160.247         0.0011933       0.0006410         0.0003443
+    1000         647.000         0.0012909       0.0006470         0.0003243
+    2000        2582.000         0.0013804       0.0006455         0.0003019
+    4000       10096.000         0.0014462       0.0006310         0.0002753
+    8000       40151.000         0.0015411       0.0006274         0.0002554
+   16000      159154.000         0.0016368       0.0006217         0.0002361
+   32000      635624.000         0.0017515       0.0006207         0.0002200
+
+Insertion sort with descending initialization
+       n            t(n)        t(n)/n^1.9        t(n)/n^2        t(n)/n^2.1
+(*)  500         311.621         0.0023205       0.0012465         0.0006696
+    1000        1261.000         0.0025160       0.0012610         0.0006320
+    2000        5084.000         0.0027180       0.0012710         0.0005944
+    4000       20117.000         0.0028817       0.0012573         0.0005486
+    8000       79928.000         0.0030678       0.0012489         0.0005084
+   16000      318261.000         0.0032731       0.0012432         0.0004722
+   32000     1271404.000         0.0035035       0.0012416         0.0004400
+
+Shell sort tests:
+
+Shell sort with ascending initialization
+       n            t(n)   t(n)/n*log(n)^1.1  t(n)/n*log(n)^1.2   t(n)/n*log(n)^1.3
+(*)  500          14.513         0.0038907       0.0032411         0.0026999
+(*) 1000          33.307         0.0039743       0.0032759         0.0027002
+(*) 2000          74.266         0.0039885       0.0032563         0.0026585
+(*) 4000         164.691         0.0040176       0.0032515         0.0026316
+(*) 8000         361.437         0.0040360       0.0032404         0.0026015
+   16000         816.000         0.0041985       0.0033458         0.0026663
+   32000        1726.000         0.0041150       0.0032567         0.0025774
+
+Shell sort with random initialization
+       n            t(n)        t(n)/n^1.1      t(n)/n^1.2        t(n)/n^1.3
+(*)  500          52.076         0.0559462       0.0300520         0.0161427
+(*) 1000         120.596         0.0604412       0.0302923         0.0151821
+(*) 2000         276.734         0.0647038       0.0302570         0.0141489
+    4000         625.000         0.0681733       0.0297446         0.0129778
+    8000        1428.000         0.0726657       0.0295815         0.0120423
+   16000        3235.000         0.0767967       0.0291696         0.0110795
+   32000        7423.000         0.0822081       0.0291340         0.0103249
+
+Shell sort with descending initialization
+       n            t(n)     t(n)/n*log(n)   t(n)/n*log(n)^1.15   t(n)/n*log(n)^1.2
+(*)  500          21.021         0.0067650       0.0051435         0.0046945
+(*) 1000          47.260         0.0068416       0.0051198         0.0046482
+(*) 2000         104.919         0.0069017       0.0050913         0.0046003
+(*) 4000         231.809         0.0069872       0.0050873         0.0045767
+    8000         507.000         0.0070517       0.0050728         0.0045454
+   16000        1119.000         0.0072247       0.0051397         0.0045882
+   32000        2441.000         0.0073535       0.0051773         0.0046058
+
+(*) these times are less than 500 microseconds, so they were computed with the difference
+between initialization and execution times.
+
+We executed all tests in both algorithms several times to get the most accurate data and avoid
+cases where the CPU doesn't operate at full power.
+
+The shell-sort algorithm has a best case complexity of O(n* logn), with worst case O(n* log²n).
+The n constant in the average case tends to 0.00226, while the n constant in
+the best case tends to 0.0123 and in the worst case tends to 0.0044
+
+The insertion sort algorithm has a best case complexity of O(n), with worst and
+average cases O(n^2).
+The n constant in the average case tends to 0.03, while the n constant in
+the best case tends to 0.0032 and in the worst case tends to 0.0051
+
+In conclusion, in the best case (already ordered), the insertion algorithm is superior due to
+the traversal of the array being simpler. In the average case and worst case, we can see that
+even with 500 elements, the shell sort is faster than the insert sort, all the times are
+smaller.

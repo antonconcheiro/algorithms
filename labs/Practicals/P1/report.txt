@@ -1,0 +1,48 @@
+Algorithms Practical 1
+
+Authors: Martín Cabana Fernandez, Antón Concheiro Fernandez, Roi Santos Ríos
+Group: 6.1
+
+In this first practical, we analyze two maximum subsequence sum algorithms.
+We start by implementing such algorithms and testing them with some given
+arrays and then with pseudo-random numbers.
+Finally, we measure the execution times of said algorithms. The times are given
+in microseconds, and we test them with arrays of pseudo-random numbers in the
+range [-n, ..., n].
+
+This test has been performed with OS Ubuntu 18.04.3 LTS (Bionic Beaver) 64-bit
+and a processor Intel Core i7-7500U CPU @ 2.70GHz * 4
+
+maxSubSum1
+       n            t(n)        t(n)/n^1.8        t(n)/n^2        t(n)/n^2.2
+     500         286.464         0.0039712       0.0011459         0.0003306
+    1000        1130.000         0.0044986       0.0011300         0.0002838
+    2000        4494.000         0.0051378       0.0011235         0.0002457
+    4000       17956.000         0.0058952       0.0011222         0.0002136
+    8000       71869.000         0.0067761       0.0011230         0.0001861
+   16000      288816.000         0.0078200       0.0011282         0.0001628
+   32000     1156811.000         0.0089948       0.0011297         0.0001419
+
+maxSubSum2
+       n            t(n)        (n)/n^0.85     t(n)/n^0.92        t(n)/n^1.1
+     500           1.697         0.0086210       0.0055799         0.0018231
+    1000           3.048         0.0085904       0.0052968         0.0015276
+    2000           5.788         0.0090501       0.0053160         0.0013533
+    4000          10.862         0.0094223       0.0052725         0.0011848
+    8000          20.322         0.0097800       0.0052134         0.0010341
+   16000          38.542         0.0102904       0.0052257         0.0009150
+   32000          75.253         0.0111467       0.0053924         0.0008334
+
+
+At first, we got some anomalous results in the execution of the first algorithm,
+but we figured out that they were due to the processor being in power-saving
+mode at the start of the execution. Executing the algorithm several times solved
+this problem by giving us the results shown here.
+
+The first algorithm has a complexity of O(n²), and the constant tends to
+0.00113, while the underestimated bound is O(n^1.8), which gives us spreaded
+values, and the overestimated bound is O(n^2.2), which is way too close to 0.
+
+The second algorithm has a complexity of O(n^0.92), and the constant tends to
+0.0053, while the underestimated bound is O(n^0.85), which gives us increasing
+values, and the overestimated bound is O(n^1.1), which tends to 0.
